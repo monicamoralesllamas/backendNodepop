@@ -1,34 +1,68 @@
 # Nodepop
+Práctica WEB-API/Node.js/MongoDB - Bootcamp Glovo 2022
 
-Deploy:
-
+## Instalación
 ```sh
-npm intall
+ git clone https://github.com/monicamoralesllamas/backendNodepop.git
+ npm install
 ```
 
-Start de application in production with;
 
+## Inicializar la base de datos :
+`````sh
+npm run init-db
+``````
+
+
+## Arrancar la la aplicación en producción:
 ```sh
 npm start
 ````
 
 Start the application in development with:
-
 ```sh
 npm run dev
 ````
 
-## API Documentation
-kkk
+# API Documentation
+Operaciones que realiza el API:
 
-GET/apiv1/anuncios
+## Lista de anuncios con posibilidad de paginación:
+```sh
+RUTA:
+http://localhost:3000/apiv1/anuncios
 
-{"results":[
-    {"_id":"63b71006630230c41d7bb8d9",
-    "nombre":"Xiaomi A2",
-    "venta":true,
-    "precio":80,
-    "foto":"mobile.jpg",
-    "tags":["mobile"]},
-}
+```
+## Con filtros por tag:
+```sh
+RUTA:
+http://localhost:3000/apiv1/anuncios?tags=motor
+GET/apiv1/anuncios?tags=motor
+```
+
+## Con filtro por tipo de anuncio(venta o búsqueda):
+```sh
+RUTA:
+http://localhost:3000/apiv1/anuncios?venta=false
+GET/apiv1/anuncios?venta=false
+```
+
+## Por rango de precio exacto:
+```sh
+RUTA: http://localhost:3000/apiv1/anuncios?precio=50
+GET/apiv1/anuncios?precio=50
+```
+## Por nombre de artículo:
+```sh
+RUTA:http://localhost:3000/apiv1/anuncios?nombre=Bicicleta
+GET/apiv1/anuncios?nombre=Bicicleta
+```
+
+## Creación de anuncio:
+```sh
+RUTA:
+POST/apiv1/anuncios
+```
+
+
 

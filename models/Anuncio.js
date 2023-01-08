@@ -14,11 +14,12 @@ const anuncioSchema = mongoose.Schema({
 
   //creamos un modelo estatico
   
-  anuncioSchema.statics.lista = function(filtro, skip, limit, fields){
+  anuncioSchema.statics.lista = function(filtro, skip, limit, fields, sort){
     const query = Anuncio.find(filtro); //esto devuelve la query sin ejecutar
     query.skip(skip);
     query.limit(limit);
     query.select(fields); //seleccionar campos unicos 
+    query.sort(sort); //ordenar
     return query.exec() // se ejecuta la consulta y se devuelve la promesa
   }
 

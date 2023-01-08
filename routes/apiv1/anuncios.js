@@ -18,22 +18,34 @@ router.get('/', async(req,res,next)=>{
     //filtros
     const nombre=req.query.nombre;
     const precio = req.query.precio;
+    const tags = req.query.tags;
+    const venta = req.query.venta;
     //paginación
     const skip = req.query.skip;
     const limit = req.query.limit; ///apiv1/anuncios?skip=0&limit=2 (ejemplo para que te devuelva del anuncio 1 al 2)
     //selección de campos
     const fields = req.query.fields; //apiv1/anuncios?fields=nombre (ejemplo para filtrar por campos)
-
+    //ordenación 
+    const sort = req.query.sort;    //apiv1/anuncios?sort=precio  (ordena de menor a mayor)
+                                    //apiv1/anuncios?sort=-precio (ordena de mayor a menor))
 
     const filtro = {};
 
+    
     if (nombre){
-        filtro.nombre = nombre; //apiv1/anuncios?nomre=Patines (ejemplo para filtrar por nombre)
+        filtro.nombre = nombre; //apiv1/anuncios?nombre=Patines (ejemplo para filtrar por nombre)
     }
     if (precio){
         filtro.precio = precio; //apiv1/anuncios?precio=125 (ejemplo para filtrar por precio)
     }
-    const anuncios= await Anuncio.lista(filtro, skip, limit, fields);
+    if (tags){
+        filtro.tags = tags; // RUTA: /apiv1/anuncios?tags=motor
+    }
+    if (venta){
+        filtro.venta = venta; // RUTA: /apiv1/anuncios?venta=true
+    }
+    
+    const anuncios= await Anuncio.lista(filtro, skip, limit, fields, sort);
 
     res.json({results: anuncios});
     }catch(err){
