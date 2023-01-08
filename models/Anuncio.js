@@ -12,6 +12,12 @@ const anuncioSchema = mongoose.Schema({
     });
 
 
+
+  //creamos lista de tags existentes
+  anuncioSchema.statics.allowTags = function(){
+    return ['work','lifestyle','motor','mobile','fashion']
+  };
+  
   //creamos un modelo estatico
   
   anuncioSchema.statics.lista = function(filtro, skip, limit, fields, sort){

@@ -34,7 +34,7 @@ async function initAnuncios(){
             "nombre": "Bicicleta",
             "venta": true,
             "precio": 230.15,
-            "foto": "http://localhost:3000/images/patines.jpg",
+            "foto": "patines.jpg",
             "tags": [ "lifestyle", "motor"]
             },
             {

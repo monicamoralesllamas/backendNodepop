@@ -53,6 +53,12 @@ router.get('/', async(req,res,next)=>{
     }
 })
 
+//GET/apiv1/tags 
+//Devuelve los tags permitidos
+router.get('/tags', function (req, res) {
+    res.json({ ok: true, result: Anuncio.allowTags() });
+  });
+
 // GET/apiv1/anuncios/(id)
 // Devuelve el anuncio del id marcado 
 
@@ -108,6 +114,8 @@ router.post('/', async (req,res,next)=>{
     next(err);
    }
    });
+
+
 
 
 //DELETE/apiv1/anuncios/:id
